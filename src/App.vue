@@ -1,46 +1,26 @@
 <template>
  <div id="app">
-  <MapBox />
+    <router-view to="/"></router-view>
  </div>
 </template>
 
 <script>
-// import axios from "axios";
+import axios from "axios";
 
-import MapBox from "./components/Map/MapBox.vue";
+// import MapBox from "./components/Map/MapBox.vue";
 
 export default {
  name: "App",
 
- components: { MapBox },
+//  components: { MapBox },
 
- // mounted() {
- //   axios.interceptors.request.use(
- //     (config) => {
- //       console.log("request start");
- //       return config;
- //     },
- //     () => console.log("request end"),
- //     { synchronous: true }
- //   );
- //   axios.interceptors.response.use(
- //     (response) => {
- //       console.log("response start");
- //       return response;
- //     },
- //     () => console.log("response end")
- //   );
- //   axios.get("http://localhost:1337/names").then((response) => {
- //     console.log(response);
- //     this.users = response.data;
- //   });
- // },
+ methods: {
+  setLocale(locale) {
+   axios.get(`http://localhost:8080/langs/${locale}.json`).then((res) => {
+    this.$i18n.setLocaleMessage(locale, res.data);
+    this.$i18n.locale = locale;
+   });
+  },
+ },
 };
 </script>
-
-<style>
-body {
- margin: 0;
- background-color: #1d2024;
-}
-</style>

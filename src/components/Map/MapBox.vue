@@ -1,19 +1,24 @@
 <template>
- <transition-group tag="div" name="map" class="map-box">
-  <div v-if="chosenCountry" :key="1">
-   <h2>You would like to join the movement?</h2>
-   <p>
-    Europe is currently discussing a regulation change in favor for local energy
-    markets. Let us know by adding a vote for local energy markets to your
-    country on the map.
-   </p>
-   <form action="POST">
-    <input type="text" v-model="chosenCountry" disabled />
-    <button>Vote</button>
-   </form>
+ <div>
+  <div class="switch">
+   <p @click="$emit('setLocale', 'en')" v-if="$i18n.locale !== 'en'">en</p>
+   <p @click="$emit('setLocale', 'de')" v-if="$i18n.locale !== 'de'">de</p>
+   <p @click="$emit('setLocale', 'ru')" v-if="$i18n.locale !== 'ru'">ru</p>
   </div>
-  <EuropeMap @setCountry="setChosenCountry" :key="2" />
- </transition-group>
+
+  <transition-group tag="div" name="map" class="map-box">
+   <div v-if="chosenCountry" :key="1">
+    <h2>{{ $t("offerToJoin") }}</h2>
+    <p>{{ $t("votingText") }}</p>
+    <form action="POST">
+     <input type="text" v-model="chosenCountry" disabled />
+     <button>{{ $t("votingButton") }}</button>
+    </form>
+   </div>
+
+   <EuropeMap @setCountry="setChosenCountry" :key="2" />
+  </transition-group>
+ </div>
 </template>
 
 <script>
@@ -25,11 +30,13 @@ export default {
    chosenCountry: null,
   };
  },
+
  methods: {
   setChosenCountry(country) {
    this.chosenCountry = country;
   },
  },
+
  components: { EuropeMap },
 };
 </script>
@@ -85,5 +92,25 @@ button {
 button:hover {
  cursor: pointer;
  background: #2bb3a0;
+}
+.switch {
+ position: absolute;
+ top: 1rem;
+ left: 1rem;
+ color: #fcfcfc;
+ transition: all .1s linear;
+}
+.switch p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 100%;
+ margin: 0;
+}
+.switch p:hover{
+  cursor: pointer;
+  background-color: #2bb3a0;
 }
 </style>

@@ -27,10 +27,11 @@
     <circle cx="521" cy="266.6" id="2"></circle>
    </g>
   </svg>
-  <p class="hover-hint">
-   Hover over the countries to see how many people have already voted. <br />
-   Click on your country and submit your vote!
-  </p>
+  <i18n path='hover' tag='p' class="hover-hint">
+    <template v-slot:break>
+      <br>
+    </template>
+  </i18n>
  </div>
 </template>
 
@@ -110,6 +111,7 @@ export default {
 path {
  fill: rgb(22, 24, 27);
  stroke: #57cbcc;
+ transition: all .12s linear;
 }
 path:hover {
  cursor: pointer;
