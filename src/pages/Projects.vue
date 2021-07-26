@@ -3,38 +3,34 @@
   <Header />
   <section class="ongoing wrapper">
    <div class="ongoing-description">
-    <h3>Ongoing projects</h3>
-    <p>
-     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio provident
-     qui maxime autem reprehenderit distinctio voluptatibus nulla fuga velit
-     commodi voluptas deserunt, nihil nobis.
-    </p>
+    <h3>{{ $t("projectsPage.OngoingProjects") }}</h3>
+    <p>{{ $t("projectsPage.LoremNobis") }}</p>
    </div>
    <div class="ongoing-projects">
-    <div class="ongoing-projects-elem">Project 1</div>
-    <div class="ongoing-projects-elem">Project 2</div>
-    <div class="ongoing-projects-elem">Project 3</div>
+    <div class="ongoing-projects-elem">{{$tc('common.project', 1, {number : 1})}}</div>
+    <div class="ongoing-projects-elem">{{$tc('common.project', 1, {number : 2})}}</div>
+    <div class="ongoing-projects-elem">{{$tc('common.project', 1, {number : 3})}}</div>
    </div>
   </section>
 
   <section class="our-lessons wrapper">
-   <h3>Our lessons learned from the Quartierstrom project</h3>
+   <h3>{{$t("projectsPage.OurLessonsLearned")}}</h3>
    <div class="our-lessons-text-box">
     <div class="our-lessons-text-box-col">
-     <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</span>
-     <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</span>
-     <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</span>
+     <span>{{$t("common.lorem6")}}</span>
+     <span>{{$t("common.lorem6")}}</span>
+     <span>{{$t("common.lorem6")}}</span>
     </div>
     <div class="our-lessons-text-box-col">
-     <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</span>
-     <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</span>
-     <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</span>
+     <span>{{$t("common.lorem6")}}</span>
+     <span>{{$t("common.lorem6")}}</span>
+     <span>{{$t("common.lorem6")}}</span>
     </div>
    </div>
   </section>
 
   <section class="quartierstrom wrapper">
-   <h3>Quartierstrom in the media</h3>
+   <h3>{{$t("projectsPage.QuartierstromInTheMedia")}}</h3>
    <div class="quartierstrom-box">
     <div class="quartierstrom-box-elem-1"></div>
     <div class="quartierstrom-box-elem-2"></div>
@@ -47,17 +43,15 @@
   </section>
 
   <section class="reviews wrapper">
-   <h3>Users about our products &amp; cooperation</h3>
+   <h3>{{$t("projectsPage.UsersAboutOurProducts")}}</h3>
    <div class="reviews-slider">
     <div class="arrow-left">&lt;</div>
     <div class="reviews-slider-box">
      <div class="reviews-slider-avatar"></div>
-     <span class="reviews-slider-name">Irene Battig</span>
-     <span class="reviews-slider-sprachwerk">Sprachwerk</span>
+     <span class="reviews-slider-name">{{$t('projectsPage.IreneBattig')}}</span>
+     <span class="reviews-slider-sprachwerk">{{$t('projectsPage.Sprachwerk')}}</span>
      <div class="reviews-slider-review">
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat vel rem
-      incidunt dicta voluptate, animi quae. Optio adipisci voluptatum
-      perferendis quam voluptatem aliquid eius?
+      {{$t('common.lorem24')}}
      </div>
     </div>
     <div class="arrow-right">&gt;</div>
@@ -163,29 +157,29 @@ export default {
 }
 .arrow-right,
 .arrow-left {
-  font-size: 6rem;
-  display: grid;
-  align-items: center;
-  justify-content: center;
+ font-size: 6rem;
+ display: grid;
+ align-items: center;
+ justify-content: center;
 }
-.reviews-slider{
-  display: grid;
-  margin: 3rem 0 8rem 0;
-  grid-template-columns: repeat(3, auto);
+.reviews-slider {
+ display: grid;
+ margin: 3rem 0 8rem 0;
+ grid-template-columns: repeat(3, auto);
 }
-.reviews-slider-box{
-  display: grid;
-  justify-items: center;
-  row-gap: 1rem;
+.reviews-slider-box {
+ display: grid;
+ justify-items: center;
+ row-gap: 1rem;
 }
-.reviews-slider-avatar{
-  width: 10rem;
-  height: 10rem;
+.reviews-slider-avatar {
+ width: 10rem;
+ height: 10rem;
  background-color: yellowgreen;
  border-radius: 100%;
 }
-.reviews-slider-review{
-  max-width: 20rem;
-  text-align: center;
+.reviews-slider-review {
+ max-width: 20rem;
+ text-align: center;
 }
 </style>

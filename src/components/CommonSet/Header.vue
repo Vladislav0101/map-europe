@@ -3,50 +3,103 @@
   <span class="logo">exnaton</span>
   <div class="nav-box">
    <nav>
-     <span>Product</span>
-     <span>Projects</span>
-     <span>For You &amp; Me</span>
-     <span>For Municipalities</span>
-     <span>About us</span>
+    <span>{{ $t("header.product") }}</span>
+    <span>{{ $tc("common.project", 1) }}</span>
+    <span>{{ $t("header.forYou&Me") }}</span>
+    <span>{{ $t("header.forMunicipalities") }}</span>
+    <span>{{ $t("header.aboutUs") }}</span>
    </nav>
-   <div class="language">lang</div>
+   <section ref="locales">
+     <option ref="locale" value="en" @click="callSetLocaleMutation('en')">en</option>
+     <option ref="locale" value="de" @click="callSetLocaleMutation('de')">de</option>
+   </section>
   </div>
  </header>
 </template>
 
+<script>
+import { mapActions, mapGetters} from 'vuex'
+
+export default {
+  mounted(){
+    this.setActiveStyle();
+  },
+
+  methods:{
+    ...mapActions(['setLocale']),
+
+    callSetLocaleMutation(locale){
+      this.setLocale(locale)
+    },
+
+    setActiveStyle(){
+    this.$refs.locales.children.forEach(element => {
+        element.classList.toggle('activeLang', element.value === this.locale)
+    });
+    }
+  },
+
+watch:{
+  locale(){
+    this.setActiveStyle()
+  }
+},
+
+  computed:{
+    ...mapGetters(['locale'])
+  }
+}
+</script>
+
 <style scoped>
-  header{
-    display: flex;
-    height: 10rem;
-    justify-content: space-between;
-    padding: 0 4rem;
-    color: #fcfcfc;
-    background-color: #1d2024;
-    padding-top: 3rem;
-  }
-  .logo{
-    width: max-content;
-    display: grid;
-    align-items: center;
-    font-size: 1.5rem;
-  }
-  .nav-box{
-    display: grid;
-    grid-template-columns: auto auto;
-    column-gap: 8rem;
-  }
-  nav{
-    column-gap: 2.5rem;
-    display: grid;
-    grid-template-columns: repeat(5, auto);
-    align-items: center;
-  }
-  nav span{
-    width: max-content;
-    font-size: 1rem;
-  }
-  .language{
-    display: grid;
-    align-items: center;
-  }
+header {
+ display: flex;
+ height: 10rem;
+ justify-content: space-between;
+ padding: 0 4rem;
+ color: #fcfcfc;
+ background-color: #1d2024;
+ padding-top: 3rem;
+}
+.logo {
+ width: max-content;
+ display: grid;
+ align-items: center;
+ font-size: 1.5rem;
+}
+.nav-box {
+ display: grid;
+ grid-template-columns: auto auto;
+ column-gap: 8rem;
+ align-items: center;
+}
+nav {
+ column-gap: 2.5rem;
+ display: grid;
+ grid-template-columns: repeat(5, auto);
+ align-items: center;
+}
+nav span {
+ width: max-content;
+ font-size: 1rem;
+}
+.language {
+ display: grid;
+ align-items: center;
+}
+option{
+  line-height: 1.3;
+  border-radius: 100%;
+  border: 1px solid #1d2024;
+  margin: 3px 0;
+}
+option:not(.activeLang):hover{
+  border: 1px solid #fcfcfc;
+  cursor: pointer;
+}
+.activeLang {
+  background-color: #fcfcfc;
+  color: black;
+  border-radius: 100%;
+}
 </style>
