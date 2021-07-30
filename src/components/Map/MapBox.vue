@@ -8,11 +8,11 @@
 
   <transition-group tag="div" name="map" class="map-box">
    <div v-if="chosenCountry" :key="1">
-    <h2>{{ $t("offerToJoin") }}</h2>
-    <p>{{ $t("votingText") }}</p>
+    <h2>{{ $t("map.offerToJoin") }}</h2>
+    <p>{{ $t("map.votingText") }}</p>
     <form action="POST">
      <input type="text" v-model="chosenCountry" disabled />
-     <button>{{ $t("votingButton") }}</button>
+     <button>{{ $t("map.votingButton") }}</button>
     </form>
    </div>
 

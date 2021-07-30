@@ -27,7 +27,7 @@
     <circle cx="521" cy="266.6" id="2"></circle>
    </g>
   </svg>
-  <i18n path='hover' tag='p' class="hover-hint">
+  <i18n path='map.hover' tag='p' class="hover-hint">
     <template v-slot:break>
       <br>
     </template>

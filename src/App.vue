@@ -1,5 +1,5 @@
 <template>
- <div id="app">
+ <div id="app" @setLocale='setLocale'>
     <router-view to="/"></router-view>
  </div>
 </template>
@@ -7,12 +7,8 @@
 <script>
 import axios from "axios";
 
-// import MapBox from "./components/Map/MapBox.vue";
-
 export default {
  name: "App",
-
-//  components: { MapBox },
 
  methods: {
   setLocale(locale) {
